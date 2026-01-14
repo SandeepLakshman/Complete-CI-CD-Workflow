@@ -1,17 +1,49 @@
-<body>
-  <h1>Registration Form – DevOps Deployment</h1>
+<p id="form-message" style="text-align:center; margin-top:15px;"></p>
 
-  <p><strong>Status:</strong> Running on Kubernetes</p>
-  <p><strong>CI/CD:</strong> GitHub Actions</p>
-  <p><strong>Container:</strong> Docker (Nginx)</p>
-  <p><strong>Deployment:</strong> Minikube Cluster</p>
+<script>
+  const message = document.getElementById("form-message");
 
-  <hr>
+  document.querySelector(".sign-in-htm .button").onclick = function (e) {
+    e.preventDefault();
+    const user = document.getElementById("signin-user").value;
+    const pass = document.getElementById("signin-pass").value;
 
-  <form>
-    <input type="text" placeholder="Username" required /><br><br>
-    <input type="email" placeholder="Email" required /><br><br>
-    <input type="password" placeholder="Password" required /><br><br>
-    <button type="submit">Register</button>
-  </form>
-</body>
+    if (!user || !pass) {
+      message.innerText = "Username and password are required";
+      message.style.color = "red";
+      return;
+    }
+
+    message.innerText = "Sign-in validation successful ✅";
+    message.style.color = "green";
+  };
+
+  document.querySelector(".sign-up-htm .button").onclick = function (e) {
+    e.preventDefault();
+    const user = document.getElementById("signup-user").value;
+    const pass = document.getElementById("signup-pass").value;
+    const repeat = document.getElementById("signup-repeat").value;
+    const email = document.getElementById("signup-email").value;
+
+    if (!user || !pass || !repeat || !email) {
+      message.innerText = "All fields are required";
+      message.style.color = "red";
+      return;
+    }
+
+    if (!email.includes("@")) {
+      message.innerText = "Enter a valid email address";
+      message.style.color = "red";
+      return;
+    }
+
+    if (pass !== repeat) {
+      message.innerText = "Passwords do not match";
+      message.style.color = "red";
+      return;
+    }
+
+    message.innerText = "Account validated successfully ✅";
+    message.style.color = "green";
+  };
+</script>
