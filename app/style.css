@@ -1,8 +1,9 @@
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #020617;
-  color: #e5e7eb;
-  text-align: center;
-  padding-top: 120px;
+p {
+  font-size: 18px;
+  margin: 8px 0;
+}
+
+hr {
+  width: 50%;
+  margin: 20px auto;
 }
