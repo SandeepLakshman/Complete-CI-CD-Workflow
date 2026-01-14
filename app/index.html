@@ -1,12 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Real DevOps CI/CD</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <h1>Production-Ready DevOps Pipeline</h1>
-  <p>GitHub Actions • Docker • Kubernetes</p>
-</body>
-</html>
+<p id="form-message" style="text-align:center; margin-top:15px;"></p>
+
+<script>
+  const message = document.getElementById("form-message");
+
+  document.querySelector(".sign-in-htm .button").onclick = function (e) {
+    e.preventDefault();
+    const user = document.getElementById("signin-user").value;
+    const pass = document.getElementById("signin-pass").value;
+
+    if (!user || !pass) {
+      message.innerText = "Username and password are required";
+      message.style.color = "red";
+      return;
+    }
+
+    message.innerText = "Sign-in validation successful ✅";
+    message.style.color = "green";
+  };
+
+  document.querySelector(".sign-up-htm .button").onclick = function (e) {
+    e.preventDefault();
+    const user = document.getElementById("signup-user").value;
+    const pass = document.getElementById("signup-pass").value;
+    const repeat = document.getElementById("signup-repeat").value;
+    const email = document.getElementById("signup-email").value;
+
+    if (!user || !pass || !repeat || !email) {
+      message.innerText = "All fields are required";
+      message.style.color = "red";
+      return;
+    }
+
+    if (!email.includes("@")) {
+      message.innerText = "Enter a valid email address";
+      message.style.color = "red";
+      return;
+    }
+
+    if (pass !== repeat) {
+      message.innerText = "Passwords do not match";
+      message.style.color = "red";
+      return;
+    }
+
+    message.innerText = "Account validated successfully ✅";
+    message.style.color = "green";
+  };
+</script>
