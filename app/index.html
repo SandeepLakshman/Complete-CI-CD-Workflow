@@ -1,95 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>CloudShip – Cloud-Native Deployments</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>Infrastructure Change Request</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- NAVBAR -->
-  <nav class="navbar">
-    <div class="logo">CloudShip</div>
-    <div class="nav-links">
-      <a href="#">Product</a>
-      <a href="#">Docs</a>
-      <a href="#">Pricing</a>
-      <a href="#">Status</a>
-    </div>
-  </nav>
+  <!-- HEADER -->
+  <header class="header">
+    <h1>Infrastructure Change Request</h1>
+    <p>Submit requests for infrastructure updates and resource changes</p>
+  </header>
 
-  <!-- HERO SECTION -->
-  <section class="hero">
-    <h1>Ship Cloud-Native Applications Faster</h1>
-    <p>
-      CloudShip helps developers build, containerize, and deploy applications
-      using automated CI/CD pipelines and Kubernetes-native infrastructure.
-    </p>
-    <div class="hero-actions">
-      <button class="primary-btn">View Live Deployment</button>
-      <button class="secondary-btn">Read Documentation</button>
-    </div>
-  </section>
+  <!-- FORM -->
+  <section class="form-section">
+    <div class="form-card">
+      <h2>Request Details</h2>
 
-  <!-- TRUST BAR -->
-  <section class="trust">
-    <p>Built with modern cloud-native technologies</p>
-    <div class="tech-stack">
-      <span>GitHub Actions</span>
-      <span>Docker</span>
-      <span>Kubernetes</span>
-      <span>Minikube</span>
-    </div>
-  </section>
+      <form id="infra-form">
+        <label>Requester Name</label>
+        <input type="text" id="name" placeholder="Your name">
 
-  <!-- FEATURES -->
-  <section class="features">
-    <div class="feature-card">
-      <h3>Automated CI/CD</h3>
-      <p>
-        Every commit triggers automated builds, container creation,
-        and deployment pipelines without manual intervention.
-      </p>
-    </div>
+        <label>Email</label>
+        <input type="email" id="email" placeholder="you@company.com">
 
-    <div class="feature-card">
-      <h3>Container-First Design</h3>
-      <p>
-        Applications are packaged as Docker images ensuring
-        consistency across environments.
-      </p>
-    </div>
+        <label>Environment</label>
+        <select id="environment">
+          <option value="">Select environment</option>
+          <option>Development</option>
+          <option>Staging</option>
+          <option>Production</option>
+        </select>
 
-    <div class="feature-card">
-      <h3>Kubernetes Runtime</h3>
-      <p>
-        Deployed on Kubernetes for scalability, self-healing,
-        and reliable service exposure.
-      </p>
+        <label>Change Type</label>
+        <select id="change">
+          <option value="">Select change</option>
+          <option>CPU / Memory Increase</option>
+          <option>New Service Deployment</option>
+          <option>Configuration Update</option>
+        </select>
+
+        <label>Justification</label>
+        <textarea id="reason" placeholder="Explain why this change is required"></textarea>
+
+        <button type="submit">Submit Request</button>
+      </form>
+
+      <p id="status"></p>
     </div>
   </section>
 
-  <!-- STATUS SECTION -->
-  <section class="status">
-    <div class="status-card">
-      <h4>Deployment Status</h4>
-      <p class="status-line">
-        <span class="dot green"></span> CI Pipeline: Passed
-      </p>
-      <p class="status-line">
-        <span class="dot blue"></span> Runtime: Kubernetes (Minikube)
-      </p>
-      <p class="status-line">
-        <span class="dot green"></span> Application: Live & Running
-      </p>
-      <p class="timestamp">Last updated: Just now</p>
-    </div>
-  </section>
+  <!-- SCRIPT -->
+  <script>
+    const form = document.getElementById("infra-form");
+    const status = document.getElementById("status");
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <p>© 2026 CloudShip. Cloud-native delivery made simple.</p>
-  </footer>
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const env = document.getElementById("environment").value;
+      const change = document.getElementById("change").value;
+      const reason = document.getElementById("reason").value.trim();
+
+      status.style.display = "block";
+
+      if (!name || !email || !env || !change || !reason) {
+        status.textContent = "All fields are required.";
+        status.className = "error";
+        return;
+      }
+
+      if (!email.includes("@")) {
+        status.textContent = "Enter a valid company email address.";
+        status.className = "error";
+        return;
+      }
+
+      if (reason.length < 15) {
+        status.textContent = "Justification must be at least 15 characters.";
+        status.className = "error";
+        return;
+      }
+
+      status.textContent = "Change request validated and submitted successfully ✅";
+      status.className = "success";
+      form.reset();
+    });
+  </script>
 
 </body>
 </html>
