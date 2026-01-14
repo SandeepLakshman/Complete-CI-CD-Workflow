@@ -1,114 +1,95 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Registration Form</title>
+  <meta charset="UTF-8" />
+  <title>CloudShip – Cloud-Native Deployments</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<h1 style="text-align:center;">Account Access Portal</h1>
-
-<div class="login-wrap">
-  <div class="login-html">
-
-    <input id="tab-1" type="radio" name="tab" checked>
-    <label for="tab-1" class="tab">Sign In</label>
-
-    <input id="tab-2" type="radio" name="tab">
-    <label for="tab-2" class="tab">Sign Up</label>
-
-    <div class="login-form">
-
-      <!-- SIGN IN -->
-      <div class="sign-in-htm">
-        <div class="group">
-          <label class="label">Username</label>
-          <input id="signin-user" type="text" class="input">
-        </div>
-        <div class="group">
-          <label class="label">Password</label>
-          <input id="signin-pass" type="password" class="input">
-        </div>
-        <div class="group">
-          <button id="signin-btn" class="button">Sign In</button>
-        </div>
-      </div>
-
-      <!-- SIGN UP -->
-      <div class="sign-up-htm">
-        <div class="group">
-          <label class="label">Username</label>
-          <input id="signup-user" type="text" class="input">
-        </div>
-        <div class="group">
-          <label class="label">Password</label>
-          <input id="signup-pass" type="password" class="input">
-        </div>
-        <div class="group">
-          <label class="label">Repeat Password</label>
-          <input id="signup-repeat" type="password" class="input">
-        </div>
-        <div class="group">
-          <label class="label">Email</label>
-          <input id="signup-email" type="email" class="input">
-        </div>
-        <div class="group">
-          <button id="signup-btn" class="button">Sign Up</button>
-        </div>
-      </div>
-
-      <p id="form-message"></p>
-
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="logo">CloudShip</div>
+    <div class="nav-links">
+      <a href="#">Product</a>
+      <a href="#">Docs</a>
+      <a href="#">Pricing</a>
+      <a href="#">Status</a>
     </div>
-  </div>
-</div>
+  </nav>
 
-<!-- SCRIPT MUST BE AT BOTTOM -->
-<script>
-  const message = document.getElementById("form-message");
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <h1>Ship Cloud-Native Applications Faster</h1>
+    <p>
+      CloudShip helps developers build, containerize, and deploy applications
+      using automated CI/CD pipelines and Kubernetes-native infrastructure.
+    </p>
+    <div class="hero-actions">
+      <button class="primary-btn">View Live Deployment</button>
+      <button class="secondary-btn">Read Documentation</button>
+    </div>
+  </section>
 
-  document.getElementById("signin-btn").onclick = function () {
-    const user = document.getElementById("signin-user").value.trim();
-    const pass = document.getElementById("signin-pass").value.trim();
+  <!-- TRUST BAR -->
+  <section class="trust">
+    <p>Built with modern cloud-native technologies</p>
+    <div class="tech-stack">
+      <span>GitHub Actions</span>
+      <span>Docker</span>
+      <span>Kubernetes</span>
+      <span>Minikube</span>
+    </div>
+  </section>
 
-    if (!user || !pass) {
-      message.textContent = "Username and password required";
-      message.style.color = "red";
-      return;
-    }
+  <!-- FEATURES -->
+  <section class="features">
+    <div class="feature-card">
+      <h3>Automated CI/CD</h3>
+      <p>
+        Every commit triggers automated builds, container creation,
+        and deployment pipelines without manual intervention.
+      </p>
+    </div>
 
-    message.textContent = "Sign-in validated successfully ✅";
-    message.style.color = "green";
-  };
+    <div class="feature-card">
+      <h3>Container-First Design</h3>
+      <p>
+        Applications are packaged as Docker images ensuring
+        consistency across environments.
+      </p>
+    </div>
 
-  document.getElementById("signup-btn").onclick = function () {
-    const user = document.getElementById("signup-user").value.trim();
-    const pass = document.getElementById("signup-pass").value.trim();
-    const repeat = document.getElementById("signup-repeat").value.trim();
-    const email = document.getElementById("signup-email").value.trim();
+    <div class="feature-card">
+      <h3>Kubernetes Runtime</h3>
+      <p>
+        Deployed on Kubernetes for scalability, self-healing,
+        and reliable service exposure.
+      </p>
+    </div>
+  </section>
 
-    if (!user || !pass || !repeat || !email) {
-      message.textContent = "All fields are required";
-      message.style.color = "red";
-      return;
-    }
+  <!-- STATUS SECTION -->
+  <section class="status">
+    <div class="status-card">
+      <h4>Deployment Status</h4>
+      <p class="status-line">
+        <span class="dot green"></span> CI Pipeline: Passed
+      </p>
+      <p class="status-line">
+        <span class="dot blue"></span> Runtime: Kubernetes (Minikube)
+      </p>
+      <p class="status-line">
+        <span class="dot green"></span> Application: Live & Running
+      </p>
+      <p class="timestamp">Last updated: Just now</p>
+    </div>
+  </section>
 
-    if (pass !== repeat) {
-      message.textContent = "Passwords do not match";
-      message.style.color = "red";
-      return;
-    }
-
-    if (!email.includes("@")) {
-      message.textContent = "Invalid email address";
-      message.style.color = "red";
-      return;
-    }
-
-    message.textContent = "Sign-up validated successfully ✅";
-    message.style.color = "green";
-  };
-</script>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© 2026 CloudShip. Cloud-native delivery made simple.</p>
+  </footer>
 
 </body>
 </html>
