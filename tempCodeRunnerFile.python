@@ -1,0 +1,28 @@
+pos = 50
+count = 0
+
+while True:
+    try:
+        line = input().strip()
+
+        if not line:
+            break
+
+        # skip invalid lines
+        if line[0] not in ('L', 'R') or not line[1:].isdigit():
+            continue
+
+        steps = int(line[1:])
+
+        if line[0] == 'L':
+            pos = (pos - steps) % 100
+        else:
+            pos = (pos + steps) % 100
+
+        if pos == 0:
+            count += 1
+
+    except EOFError:
+        break
+
+print(count)
